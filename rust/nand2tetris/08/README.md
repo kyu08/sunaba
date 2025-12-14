@@ -1,0 +1,22 @@
+## TODO
+- [x] `label`, `if`, `if-goto`のparse, encodeを実装する
+- [x] 以下のテストが通ることを確認する
+    - [x] `test_data/ProgramFlow/BasicLoop`
+    - [x] `test_data/ProgramFlow/FibonacciSeries`
+- [x] `call`, `function`, `return`のparseを実装する
+- [x] `call`のencodeを実装する
+- [x] `function`のencodeを実装する
+- [x] `return`のencodeを実装する
+- [x] `test_data/FunctionCalls/SimpleFunction`
+- [x] ブートストラップコードを実装する(P219参照)
+    - [x] SPの初期化
+    - [x] `Sys.init`を呼び出す
+        - [x] 何も読んでない段階で`call Sys.init`してもお問題ないんだっけ？ -> 大丈夫そう
+- [x] フォルダ指定できるように修正する
+    - [x] 指定された引数がフォルダかファイルかを判定する
+    - [x] フォルダだったらすべての.vmファイルを処理する
+    - [x] 処理結果をconcatして`folder_name.asm`に出力する
+- [x] 以下のテストが通ることを確認する
+    - [x] `test_data/FunctionCalls/StaticsTest`
+    - [x] `test_data/FunctionCalls/FibonacciElement`
+    - [x] `test_data/FunctionCalls/NestedCall`

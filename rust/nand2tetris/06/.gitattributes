@@ -1,0 +1,2 @@
+**/*.hack linguist-vendored=true
+**/*.asm linguist-vendored=true

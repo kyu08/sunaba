@@ -1,0 +1,39 @@
+## TODO
+- [x] Memory
+- [x] Array
+- [x] Math
+    - [x] multiply
+    - [x] divide
+    - [x] sqrt
+    - [x] min
+    - [x] max
+    - [x] abs
+- [x] String
+- [x] Output
+    - [x] `A`が正しくprintできる
+        - [x] `A`のbit mapを定義
+        - [x] `printChar`を実装
+    - [x] `moveCursor`を実装
+    - [x] `printString`を実装
+    - [x] `println`を実装
+    - [x] `printInt`を実装
+    - [x] `backSpace`を実装
+- [x] Screen
+    - [x] init
+    - [x] clearScreen
+    - [x] setColor
+    - [x] drawPixel
+    - [x] drawLine
+    - [x] drawRectangle
+    - [x] drawCircle
+- [x] Keyboard
+    - [x] init
+    - [x] keyPressed
+    - [x] readChar
+    - [x] readLine
+    - [x] readInt
+- [x] Sys
+    - [x] init
+    - [x] halt
+    - [x] wait
+    - [x] error
