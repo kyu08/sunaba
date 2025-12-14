@@ -1,15 +1,15 @@
-package shortvar_test
+package finderr_test
 
 import (
 	"testing"
 
 	"github.com/gostaticanalysis/testutil"
-	"github.com/kyu08/shortvar"
+	"github.com/kyu08/finderr"
 	"golang.org/x/tools/go/analysis/analysistest"
 )
 
 // TestAnalyzer is a test for Analyzer.
 func TestAnalyzer(t *testing.T) {
 	testdata := testutil.WithModules(t, analysistest.TestData(), nil)
-	analysistest.Run(t, testdata, shortvar.Analyzer, "a")
+	analysistest.Run(t, testdata, finderr.Analyzer, "a")
 }

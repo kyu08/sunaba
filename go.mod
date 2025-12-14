@@ -1,4 +1,4 @@
-module github.com/kyu08/shortvar
+module github.com/kyu08/finderr
 
 go 1.20
 

@@ -2,13 +2,13 @@ package a
 
 import "fmt"
 
-func F() {
-	hoge := "str"
-	fmt.Printf("hoge: %v\n", hoge)
-	res := 1 + 2
-	print(res)
+type hoge struct{}
+
+func (hoge) String() string {
+	return "hoge"
 }
 
-var a = 1 // want "a should be more than 3 characters"
-
-const hoge = 2
+func F() {
+	var a fmt.Stringer = hoge{}
+	fmt.Printf("a: %v\n", a)
+}
