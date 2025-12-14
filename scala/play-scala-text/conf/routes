@@ -1,0 +1,2 @@
+GET    /    controllers.HelloController.get(a: Option[String], b: Option[String])
+GET    /plus    controllers.HelloController.plus(a: Option[String], b: Option[String])
