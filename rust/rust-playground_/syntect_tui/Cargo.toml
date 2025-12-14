@@ -1,0 +1,13 @@
+[package]
+name = "syntect_tui"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+colored = "2"
+fuzzy-matcher = "0.3.7"
+ratatui = "0.24.0"
+syntect = "5.1.0"
+syntect-tui = "2.0.0"
