@@ -1,0 +1,9 @@
+[package]
+name = "syntect-tui-sample"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ratatui = "0.29.0"
+syntect = "5.2.0"
+syntect-tui = "3.0"
