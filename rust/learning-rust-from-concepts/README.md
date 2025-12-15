@@ -117,3 +117,46 @@
             }
         }
         ```
+
+## 第8章 Rustによるスレッド・非同期プログラミング
+```rust
+use std::thread::spawn;
+
+fn main() {
+    let mut v_threads = Vec::new();
+    for i in 0..10 {
+        let thread = spawn(move || println!("{}", i));
+        v_threads.push(thread);
+    }
+
+    let _x: Vec<()> = v_threads.into_iter().map(|th| th.join().unwrap()).collect();
+}
+```
+
+- `std::thread::spawn()`でスレッドが作成される。
+- `spawn()`はあくまでスレッドを起動するだけなので完了をブロックするには`spawn()`が返却した値(`JoinHandle型`)に対して`join()`メソッドを実行する。
+- スレッド間でデータを共有するには`Arc<T>`型を利用する。(`"A"tomically "R"eference-"C"ountered`)
+- スレッド間での共有データに書き込みをするためにはmutextを利用して都度ロックする。
+- 冒頭の例だと`join()`を使って別スレッドのデータをメインスレッドで処理したが、以下の例のように`channel`を使うこともできる。
+    - `tx`: 送信路
+    - `rx`: 受信路
+
+```rust
+use std::{sync::mpsc::channel, thread::spawn};
+
+fn main() {
+    let data = vec![1, 2, 3, 4, 5];
+    let (tx, rx) = channel();
+
+    let data_len = data.len();
+
+    for dd in data {
+        let tx = tx.clone();
+        spawn(move || tx.send(dd));
+    }
+
+    for _ in 0..data_len {
+        println!("{}", rx.recv().unwrap());
+    }
+}
+```
