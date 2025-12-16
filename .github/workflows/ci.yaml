@@ -1,0 +1,65 @@
+name: CI for book
+on:
+  push:
+    branches: [main]
+    paths:
+      - "rust/rust-web-app-book/**"
+  pull_request:
+    paths:
+      - "rust/rust-web-app-book/**"
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: rust/rust-web-app-book
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache dependencies
+        uses: Swatinem/rust-cache@v2
+      - name: Install Rust toolchain
+        run: rustup toolchain install stable
+      - name: Install cargo-related tools
+        uses: taiki-e/install-action@v2
+        with:
+          tool: nextest,cargo-make
+      - name: Test
+        run: cargo make test-ci --locked
+
+  clippy:
+    name: Clippy
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: rust/rust-web-app-book
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache dependencies
+        uses: Swatinem/rust-cache@v2
+      - name: Install Rust toolchain
+        run: rustup toolchain install stable
+      - name: Install cargo-make
+        uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-make
+      - name: Clippy
+        run: cargo make clippy-ci -- -Dwarnings
+
+  fmt:
+    name: Rustfmt
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: rust/rust-web-app-book
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust toolchain
+        run: rustup toolchain install stable
+      - name: Install cargo-make
+        uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-make
+      - name: Rustfmt
+        run: cargo make fmt -- --check
