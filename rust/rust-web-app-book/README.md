@@ -13,4 +13,4 @@
 - タイトルの通り環境構築の手順が書かれている。
 
 ## 第3章 最小構成アプリの実装
-
+- `anyhow::Error`は`std::error::Error`を実装する任意のエラー型（ここでは`std::net::AddrParseError`や`hyper::error::Error`）を自動的に`anyhow::Error`型に変換する。
