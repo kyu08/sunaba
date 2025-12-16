@@ -1,53 +1,27 @@
-# 書籍「RustによるWebアプリケーション開発　設計からリリース・運用まで」掲載コード
+# rusty-book-manager-template
 
-書籍「[RustによるWebアプリケーション開発　設計からリリース・運用まで](https://www.kspub.co.jp/book/detail/5369579.html)」で取り扱っているWebアプリケーションのソースコードを格納しているリポジトリです。書籍を購入くださった方が実際にコードを動かして確認しやすくなるようにしています。
+『Rust による Web アプリケーション開発』上の蔵書管理アプリケーションを実装するために便利なテンプレートリポジトリです。本書の開発を開始するにあたり、一通り必要な設定やファイルを揃えています。
 
-## リポジトリの構成
+このテンプレートリポジトリをお手元に clone することで、本書での開発をよりスムーズに進めることができます。このリポジトリを利用して開発を進めると、cargo-make に関する設定や Docker に関連する設定をショートカットすることができます。Rust のコードに集中して本書の理解を進めたい方はぜひ、このリポジトリをお手元に clone してください。
 
-書籍では、章を読み進めるごとに徐々にWebアプリケーションを構築していけるようになっています。以下の2つのリポジトリを用意していますので、用途に合わせてご参照ください。
+## 使い方
 
-- 実装し始めるための環境を格納した[テンプレートリポジトリ](#テンプレートリポジトリ)
-- 章の区切りごとのソースコードを確認するためのリポジトリ（[本リポジトリ](#本リポジトリ)）
+このリポジトリのページの右上にある「Use this repository」というボタンを押してください。ボタンを押下後、「Create a new repository」を選択します。
 
-### テンプレートリポジトリ
+![Use this repository](./doc/images/readme_image_1.png)
 
-書籍を読みながら自身でコードを書き進めたい方のために、[開発に必要な設定やファイルを事前準備済みのテンプレートリポジトリ](https://github.com/rust-web-app-book/rusty-book-manager-template)を用意していますので、ぜひご利用ください。
+続いて、自身のリポジトリ名を入力し、リポジトリを作成します。手元にリポジトリが作成されたら、開発を開始することができます。
 
-- https://github.com/rust-web-app-book/rusty-book-manager-template
+![Create a new repository](./doc/images/readme_image_2.png)
 
-テンプレートリポジトリには、書籍上ではソースコードを掲載していないフロントエンドとインフラのコードも格納しています。テンプレートリポジトリ内の以下のディレクトリおよびディレクトリ内の `README.md` をご参照ください。
+## テンプレートの内容
 
-- フロントエンド：`frontend` ディレクトリ
-- インフラ： `infra` ディレクトリ
+このテンプレートリポジトリには下記が含まれています。
 
-### 本リポジトリ
-
-本リポジトリでは、書籍の区切り（章・節）ごとのソースコード一式をブランチにて参照できるようにしてあります。[ブランチの一覧](#ブランチの一覧)をご参照ください。
-
-#### ブランチの一覧
-
-- [chapter2](https://github.com/rust-web-app-book/rusty-book-manager/tree/chapter2)：2章の終わり時点
-- [chapter3](https://github.com/rust-web-app-book/rusty-book-manager/tree/chapter3)：3章の終わり時点
-- [chapter4](https://github.com/rust-web-app-book/rusty-book-manager/tree/chapter4)：4章の終わり時点
-- 5章の各節のブランチ
-  - [chapter5-2](https://github.com/rust-web-app-book/rusty-book-manager/tree/chapter5-2)：5.2節の終わり時点
-  - [chapter5-3](https://github.com/rust-web-app-book/rusty-book-manager/tree/chapter5-3)：5.3節の終わり時点
-  - [chapter5-4](https://github.com/rust-web-app-book/rusty-book-manager/tree/chapter5-4)：5.4節の終わり時点
-  - [chapter5-5](https://github.com/rust-web-app-book/rusty-book-manager/tree/chapter5-5)：5.5節の終わり時点
-  - [chapter5-6](https://github.com/rust-web-app-book/rusty-book-manager/tree/chapter5-6)：5.6節の終わり時点
-  - [chapter5-7](https://github.com/rust-web-app-book/rusty-book-manager/tree/chapter5-7)：5.7節の終わり時点
-  - [chapter5-8](https://github.com/rust-web-app-book/rusty-book-manager/tree/chapter5-8)：5.8節の終わり時点
-- [chapter6](https://github.com/rust-web-app-book/rusty-book-manager/tree/chapter6)：6章の終わり時点
-- [chapter7](https://github.com/rust-web-app-book/rusty-book-manager/tree/chapter7)：7章の終わり時点
-
-## 書籍との差分
-
-### errata
-
-書籍の正誤表は[errata](https://github.com/rust-web-app-book/errata)にて公開しております。あわせてご覧ください。
-
-### Rustのバージョンについて
-
-sqlxの特定のバージョンで一部コンパイルエラーが発生することを確認しております。[こちらのIssue](https://github.com/rust-web-app-book/rusty-book-manager/issues/9)にて事象が報告されています。このコンパイルエラーは、本書にて`rust-toolchain.toml`に指定したRust 1.78.0で発生してしまうことがわかっています。
-
-そのためこのリポジトリでは、Rustのバージョンをstable 1.84.0に引き上げる対応を行なっております。なお書籍を読み進められる際も、Rust stable 1.84.0でそのまま問題ありません。
+- Dockerfile: Docker 向けの設定が書かれています。
+- compose.yaml: docker compose を立ち上げるために必要です。
+- Makefile.toml: cargo-make の設定のために必要です。
+- rust-toolchain.toml: 書籍と Rust のバージョンをそろえるために必要です。
+- .github: GitHub Actions の設定ファイルが主に含まれています。
+- infra: AWS 上にリソースを構築し、デプロイやリリースを一通り体験したい場合に必要です。セットアップの方法については、[README](./infra/README.md)に記載しています。
+- frontend: rust-book-manager の UI を立ち上げたい場合に必要です。立ち上げる方法は、[README](./frontend/README.md)に記載しています。
