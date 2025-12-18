@@ -34,3 +34,41 @@
 
 ## 第5章 蔵書管理サーバーの実装
 
+
+## GoユーザーがRustでサーバーを書くときのキャッチアップが必要そうなポイント
+- マクロ
+- アトリビュート Goに慣れていると↓こういうのとか若干黒魔術感を感じる。
+    ```rust
+    #[derive(Error, Debug)]
+    pub enum AppError {
+        #[error("{0}")]
+        UnprocessableEntity(String),
+        #[error("{0}")]
+        EntityNotFound(String),
+        #[error("{0}")]
+        ValidationError(#[from] garde::Report),
+        #[error("トランザクションを実行できませんでした。")]
+        TransactionError(#[source] sqlx::Error),
+        #[error("データベース処理実行中にエラーが発生しました。")]
+        SpecificOperationError(#[source] sqlx::Error),
+        #[error("No rows affected: {0}")]
+        NoRowsAffectedError(String),
+        #[error("{0}")]
+        KeyValueStoreError(#[from] redis::RedisError),
+        #[error("{0}")]
+        BcryptError(#[from] bcrypt::BcryptError),
+        #[error("{0}")]
+        ConvertToUuidError(#[from] uuid::Error),
+        #[error("ログインに失敗しました")]
+        UnauthenticatedError,
+        #[error("認可情報が誤っています")]
+        UnauthorizedError,
+        #[error("許可されていない操作です")]
+        ForbiddenOperation,
+        #[error("{0}")]
+        ConversionEntityError(String),
+    }
+    ```
+- 所有権
+- 参照を扱おうとするとでてくるArcとか
+- 非同期処理

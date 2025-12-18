@@ -11,7 +11,8 @@ use shared::{
 };
 use tokio::net::TcpListener;
 use tower_http::{
-    LatencyUnit, cors,
+    LatencyUnit,
+    cors::CorsLayer,
     trace::{DefaultMakeSpan, DefaultOnRequest, DefaultOnResponse, TraceLayer},
 };
 use tracing::Level;
@@ -49,7 +50,7 @@ async fn bootstrap() -> Result<()> {
     let app = Router::new()
         .merge(build_health_check_routers())
         .merge(build_book_router())
-        .layer(cors())
+        .layer(CorsLayer::permissive())
         .layer(
             TraceLayer::new_for_http()
                 .make_span_with(DefaultMakeSpan::new().level(Level::INFO))
