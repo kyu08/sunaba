@@ -1197,6 +1197,7 @@ dependencies = [
  "serde",
  "shared",
  "sqlx",
+ "strum",
  "uuid",
 ]
 
