@@ -5,6 +5,8 @@ int const IN = 1;
 int const OUT = 0;
 int const MAX_WORD_LENGTH = 10;
 
+// 値更新処理を関数に切り出すときに、返り値として更新後の値を返すのではなく、
+// 更新したい値のポインタを引数として受け取るデザインパターンはよく見るかも。
 void update_histogram(int *histogram, int word_length) {
   if (word_length == 0) {
     return;
@@ -15,18 +17,47 @@ void update_histogram(int *histogram, int word_length) {
   }
 }
 
-void print_histogram(int *histogram) {
-  for (int i = 0; i < 10; i++) {
-    if (i < MAX_WORD_LENGTH) {
-      printf("%d文字: %d\n", i + 1, histogram[i]);
-      continue;
-    }
-    // i == 9のとき
-    printf("%d文字以上: %d\n", MAX_WORD_LENGTH, histogram[i]);
+void print_bar(int len) {
+  for (int i = 0; i < len; i++) {
+    printf("■");
   }
 }
 
-// 入力した単語の長さをヒストグラムにしてプリントするプログラム
+void print_histogram(int *histogram) {
+  printf("-------------\n");
+  for (int i = 0; i < 10; i++) {
+    // 階級ごとのlabel
+    if (i < MAX_WORD_LENGTH - 1) {
+      printf("len == %2d: ", i + 1);
+    } else {
+      // i == 9のとき
+      printf("len >= %2d: ", MAX_WORD_LENGTH);
+    }
+
+    // 階級ごとのデータ
+    print_bar(histogram[i]);
+    printf("\n");
+  }
+}
+
+//
+/* 入力した単語の長さをヒストグラムにしてプリントするプログラム。以下の様な感じで動く
+
+$ make run
+hoge hoge make run
+-------------
+len ==  1:
+len ==  2:
+len ==  3: ■
+len ==  4: ■■■
+len ==  5:
+len ==  6:
+len ==  7:
+len ==  8:
+len ==  9:
+len >= 10:
+
+ */
 int main(void) {
   // 入力した単語の長さを階級ごとに分ける
   int c, state = OUT, current_word_length = 0;
