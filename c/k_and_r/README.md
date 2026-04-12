@@ -7,5 +7,6 @@ https://www.kyoritsu-pub.co.jp/book/b10011596.html
 - 1-22
 - 1-23
 - 1-24
+- 2-5以降
 
 [^1]: The Japanese Edition of "C Programming Language, 2nd Edition by Brian W. Kernighan, Dennis M. Ritchie"
