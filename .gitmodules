@@ -1,0 +1,3 @@
+[submodule "kubernetes/kubernetes-in-action/kubernetes-in-action-2nd-edition"]
+	path = kubernetes/kubernetes-in-action/kubernetes-in-action-2nd-edition
+	url = https://github.com/luksa/kubernetes-in-action-2nd-edition.git
