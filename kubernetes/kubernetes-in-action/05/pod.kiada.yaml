@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kiada
+spec:
+  containers:
+    - name: kiada
+      image: kyu08/kiada:0.1
+      ports:
+        - containerPort: 8080
